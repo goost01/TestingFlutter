@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:testingapp/firebase_options.dart';
 import 'package:testingapp/services/auth/auth_provider.dart';
 import 'package:testingapp/services/auth/auth_user.dart';
 import 'package:testingapp/services/auth/firebase_auth_provider.dart';
@@ -36,7 +38,10 @@ class AuthService implements AuthProvider {
 
   @override
   Future<void> sendEmailVerification() => provider.sendEmailVerification();
+  
+  @override
+  Future<void> intialize() => provider.intialize();
+  }
 
 
   
-}

@@ -9,7 +9,13 @@ import 'package:firebase_auth/firebase_auth.dart'
 
 class FirebaseAuthProvider implements AuthProvider {
   
-
+  @override
+  Future<void> intialize() async{
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    throw UnimplementedError();
+  }
   @override
   Future<AuthUser> createUser({
     required String email,
