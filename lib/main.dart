@@ -3,10 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:testingapp/views/login_view.dart';
+import 'package:testingapp/views/notes_view.dart';
 import 'package:testingapp/views/register_view.dart';
 import 'package:testingapp/views/verifyEmail_view.dart';
-
 import 'firebase_options.dart';
+import 'dart:developer' as devtools show log;
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
@@ -19,6 +21,7 @@ void main() {
       routes: {
         '/login/':(context) => const LoginView(),
         '/register/':(context) => const RegisterView(),
+        '/main/':(context) => const NotesView(),
       },
     ),
   );
@@ -41,18 +44,14 @@ class HomePage extends StatelessWidget {
             final user = FirebaseAuth.instance.currentUser;
             if (user != null){
               if (user.emailVerified){
-                print("Email Verified");
-              }else{
+                return const NotesView();
+              } else{
                 return const VerifyEmailView();
               }
-              
-            }else{
+            } else{
               return const LoginView();
             }
-            
-            return const Text("done");
-              
-            
+
             default:
               return Scaffold(
                 appBar: AppBar(
