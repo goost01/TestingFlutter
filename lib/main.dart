@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: AuthService.firebase().intialize(),
+        future: AuthService.firebase().initialize(),
         builder:(context, snapshot) {
           
           switch (snapshot.connectionState){
